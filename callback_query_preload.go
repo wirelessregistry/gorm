@@ -328,7 +328,6 @@ func (scope *Scope) handleManyToManyPreload(field *Field, conditions []interface
 		scope.scan(rows, columns, append(fields, joinTableFields...))
 
 		scope.New(elem.Addr().Interface()).
-			InstanceSet("gorm:skip_query_callback", true).
 			callCallbacks(scope.db.parent.callbacks.queries)
 
 		var foreignKeys = make([]interface{}, len(sourceKeys))
